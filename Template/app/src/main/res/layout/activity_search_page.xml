@@ -29,4 +29,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SearchSearchBarSV" />
 
+    <Button
+        android:id="@+id/SearchHomeButton"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/SearchSearchButton"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SearchHomeButton" />
+
+    <Button
+        android:id="@+id/SearchPostButton"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SearchSearchButton" />
+
+    <Button
+        android:id="@+id/SearchProfileButton"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SearchPostButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

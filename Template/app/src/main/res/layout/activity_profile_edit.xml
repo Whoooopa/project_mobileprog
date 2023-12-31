@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D9D9D9"
-    tools:context=".ProfileEditActivity">
+    tools:context=".ProfileEditPage">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ItemImageIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
