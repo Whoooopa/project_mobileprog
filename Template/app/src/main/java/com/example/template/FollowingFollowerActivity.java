@@ -1,4 +1,4 @@
-package com.example.template;
+package com.example.mobprogproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 

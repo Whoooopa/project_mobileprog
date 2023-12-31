@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         loginLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Ganti ke loginToHome page nanti
                 boolean loginValidation = true;
 
                 if (loginEmailET.getText().toString().trim().equals("")) {
@@ -43,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (loginValidation) {
-                    Intent loginToSearch = new Intent(MainActivity.this, SearchPage.class);
-                    startActivity(loginToSearch);
+                    Intent loginToHome = new Intent(MainActivity.this, HomePage.class);
+                    startActivity(loginToHome);
                 }
             }
         });
