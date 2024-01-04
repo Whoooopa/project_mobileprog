@@ -1,79 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D9D9D9"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/LoginLoginTV"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="106dp"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/my_primary"
+        android:padding="10dp"
+        android:id="@+id/main_toolbar">
 
-    <EditText
-        android:id="@+id/LoginEmailET"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="48dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginLoginTV" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"/>
+        
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_search"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/main_search_btn"/>
 
-    <EditText
-        android:id="@+id/LoginPasswordET"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="48dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginEmailET" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/LoginLoginButton"
-        android:layout_width="0dp"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_toolbar"
+        android:layout_above="@id/divider"
+        android:id="@+id/main_frame_layout"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:id="@+id/divider"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="48dp"
-        android:background="@color/black"
-        android:text="Login"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginPasswordET" />
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:id="@+id/bottom_navigation"
+        app:menu="@menu/bottom_navigation_menu"/>
 
-    <TextView
-        android:id="@+id/LoginToRegisterTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:clickable="true"
-        android:onClick="onClickableTextClick"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
-        android:text="Don't have an account? Register here!"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginLoginButton" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

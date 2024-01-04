@@ -1,57 +1,66 @@
 package com.example.mobprogproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ImageButton;
+
+import com.example.mobprogproject.utils.FirebaseUtil;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    private void logToReg() {
-        Intent loginToRegister = new Intent(MainActivity.this, RegisterPage.class);
-        startActivity(loginToRegister);
-    }
+    BottomNavigationView bottomNavigationView;
+    ImageButton searchButton;
+
+    ChatFragment chatFragment;
+    ProfileFragment profileFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginLoginButton = findViewById(R.id.LoginLoginButton);
-        TextView loginToRegisterTV = findViewById(R.id.LoginToRegisterTV);
-        EditText loginEmailET = findViewById(R.id.LoginEmailET);
-        EditText loginPasswordET = findViewById(R.id.LoginPasswordET);
+        chatFragment = new ChatFragment();
+        profileFragment = new ProfileFragment();
 
-        loginLoginButton.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        searchButton = findViewById(R.id.main_search_btn);
+
+        searchButton.setOnClickListener((v) ->{
+            startActivity(new Intent(MainActivity.this, SearchUserActivity.class));
+        });
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                boolean loginValidation = true;
-
-                if (loginEmailET.getText().toString().trim().equals("")) {
-                    loginEmailET.setError("Enter email");
-                    loginValidation = false;
-                }
-
-                if (loginPasswordET.getText().toString().trim().equals("")) {
-                    loginPasswordET.setError("Enter password");
-                    loginValidation = false;
-                }
-
-                if (loginValidation) {
-                    Intent loginToHome = new Intent(MainActivity.this, HomePage.class);
-                    startActivity(loginToHome);
-                }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               if (item.getItemId()==R.id.menu_chat) {
+                   getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, chatFragment).commit();
+               }
+               if (item.getItemId()==R.id.menu_profile) {
+                   getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, profileFragment).commit();
+               }
+                return true;
             }
         });
 
-        loginToRegisterTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logToReg();
+        bottomNavigationView.setSelectedItemId(R.id.menu_chat);
+
+        getFCMToken();
+
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task ->{
+            if(task.isSuccessful()){
+                String token = task.getResult();
+                FirebaseUtil.currentUserDetails().update("fcmToken",token);
             }
         });
     }

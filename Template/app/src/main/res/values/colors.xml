@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="my_primary">#495464</color>
+    <color name="my_secondary">#BBBFCA</color>
+
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#F5F7F8</color>
+
+    <color name="off_white">#F4F4F2</color>
+    <color name="light_gray">#C3C3C3</color>
+
+    <color name="chat">#11AC94</color>
+
 </resources>
